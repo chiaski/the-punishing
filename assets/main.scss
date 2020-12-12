@@ -1,13 +1,19 @@
-@import url('https://rsms.me/inter/inter.css');
-
-html {
-  font-family: 'Inter', sans-serif;
+@font-face {
+    font-family: 'Sneak';
+    src: url('Sneak-RegularItalic.woff2') format('woff2'),
+        url('Sneak-RegularItalic.woff') format('woff');
+    font-weight: normal;
+    font-style: italic;
+    font-display: swap;
 }
 
-@supports (font-variation-settings: normal) {
-  html {
-    font-family: 'Inter var', sans-serif;
-  }
+@font-face {
+    font-family: 'Sneak';
+    src: url('Sneak-Regular.woff2') format('woff2'),
+        url('Sneak-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
 }
 
 @font-face {
@@ -29,9 +35,50 @@ html {
 }
 
 
+.static {
+  position: fixed;
+  top: -50%;
+  left: -50%;
+  right: -50%;
+  bottom: -50%;
+  width: 150;
+  height: 200vh;
+  z-index: 9999;
+  pointer-events: none;
+  background-repeat: repeat;
+  background-size: 150%;
+  animation: bg-animation .5s infinite;
+  opacity: .9;
+  visibility: visible;
+}
+
+@keyframes bg-animation {
+    0% { transform: translate(0,0) }
+    10% { transform: translate(-5%,-5%) }
+    20% { transform: translate(-10%,5%) }
+    30% { transform: translate(5%,-10%) }
+    40% { transform: translate(-5%,15%) }
+    50% { transform: translate(-10%,5%) }
+    60% { transform: translate(15%,0) }
+    70% { transform: translate(0,10%) }
+    80% { transform: translate(-15%,0) }
+    90% { transform: translate(10%,5%) }
+    100% { transform: translate(5%,0) }
+}
+
+html {
+  font-family: "Sneak", "Helvetica", system-ui, -apple-system, BlinkMacSystemFont;
+}
+
+@supports (font-variation-settings: normal) {
+  html {
+    
+  }
+}
+
 :root {
 
-  --bg-color: #fdfdfd;
+  --bg-color: #000;
   --bg-dark-color: #121212;
 
   --text-color: #dfdce6;
@@ -56,7 +103,6 @@ html {
 
 
 body {
-  font-family: "Inter", "Helvetica", system-ui, -apple-system, BlinkMacSystemFont;
   background: var(--bg-color);
   color: var(--text-color);
   text-rendering: optimizeLegibility;
@@ -86,6 +132,7 @@ body {
   padding: 1em;
   height: 100%;
   width: 100%;
+  
 }
 
 .cover{
@@ -96,7 +143,7 @@ body {
   height:100%;
   background-size: cover;
   mix-blend-mode: screen;
-  z-index: 9999;
+  z-index: 99;
   pointer-events: none;
 }
 
@@ -114,7 +161,7 @@ body {
 }
 
 .box-inner{
-  
+  margin:15vh auto;
 }
 
 .box.box-80 {
@@ -158,8 +205,37 @@ h1 {
 
 h2{
   font-family: "Editorial New Light";
-  font-size: 32px;
+  font-size: 42px;
+  max-width: 60vw;
+  line-height: 90%;
   letter-spacing: -2px;
+}
+
+
+h3{
+  
+  width: 90vw;
+  max-width: 600px;
+  margin: 1.5em auto;
+  display: block;
+  
+  line-height: 100%;
+  font-family: "Editorial New Light";
+  color: var(--text-color);
+  letter-spacing: -6px;
+  font-size: 64px;
+  text-align: center;
+}
+
+.blocker{
+  width: 100%;
+  text-align: center;
+  margin: 2.5em auto;
+}
+
+img.highlight{
+  max-width: 500px;
+  margin: 0 auto;
 }
 
 .block-text p{
@@ -169,8 +245,9 @@ h2{
 
 
 p {
-  font-size: 14px !important;
-  line-height: 150%;
+  margin: 0 auto;
+  font-size: 16px;
+  line-height: 140%;
   
   max-width: 800px;
 }
@@ -180,13 +257,20 @@ p.p-center{
   text-align: center;
 }
 
+p.p-quote{
+  font-family: "Editorial New Light";
+  font-size: 2.8em;
+  line-height: 100%;
+  padding: .5em 2.5em;
+  max-width: 550px;
+  letter-spacing: -3px;
+  text-align: center;
+}
+
 /* TEXT */
 
-a.button{
-  display: inline-block;
-  text-decoration: none;
-  border:1px solid var(--text-color);
-  padding: .5em;
+
+a {
   color: var(--text-color);
   -webkit-transition: all .3s linear;
   -moz-transition: all .3s linear;
@@ -195,19 +279,23 @@ a.button{
   transition: all .3s linear;
 }
 
-a.button:hover{
-  text-decoration: none;
-  opacity: 0.8;
-  color: var(--text-color);
-}
-
-a {
-  color: var(--text-color);
-}
-
 a:hover {
   color: var(--text-accent);
-  text-decoration: underline;
+}
+
+
+a.button{
+  display: inline-block;
+  text-decoration: none;
+  border:1px solid var(--text-color);
+  padding: .5em;
+  color: var(--text-color);
+}
+
+a.button:hover{
+  color:yellow;
+  opacity: 0.6;
+  color: var(--text-color);
 }
 
 
@@ -250,6 +338,8 @@ q {
   border-left: 4px solid var(--ele-light);
   margin: 1.5em 0em;
   padding: 0.5em 1em;
+  max-width: 80vw;
+  margin: 0 auto;
 }
 
 code,
