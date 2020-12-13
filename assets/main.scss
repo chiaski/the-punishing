@@ -46,7 +46,7 @@
   z-index: 9999;
   pointer-events: none;
   background-repeat: repeat;
-  background-size: 150%;
+  background-size: 500%;
   animation: bg-animation .5s infinite;
   opacity: .9;
   visibility: visible;
@@ -65,6 +65,23 @@
     90% { transform: translate(10%,5%) }
     100% { transform: translate(5%,0) }
 }
+
+
+
+@keyframes pageload {
+  0% {
+    opacity: 1;
+  }
+
+  99% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
 
 html {
   font-family: "Sneak", "Helvetica", system-ui, -apple-system, BlinkMacSystemFont;
@@ -99,6 +116,26 @@ html {
   background: var(--bg-dark-color);
   color: var(--text-dark-color);
 
+}
+
+#loader{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 99;
+  background: #eee;
+  pointer-events: none;
+  animation: 1.5s ease-out 2.5s 1 pageload forwards;
+  // TODO: ENABLE
+  display: none;
+  
+  .loading{
+    color:#000;
+    text-transform: uppercase;
+  }
+  
 }
 
 
@@ -155,13 +192,13 @@ body {
   align-self: center;
   justify-content: center;
   place-items:center;
-  background-size: contain;
+  background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
 }
 
 .box-inner{
-  margin:15vh auto;
+  margin:2vh auto;
 }
 
 .box.box-80 {
@@ -189,8 +226,7 @@ h6 {
 
 
 h1 {
-  
-  margin: 0 auto;
+  margin: .5em auto;
   width: 90vw;
   max-width: 600px;
   display: block;
@@ -213,10 +249,9 @@ h2{
 
 
 h3{
-  
   width: 90vw;
   max-width: 600px;
-  margin: 1.5em auto;
+  margin: 1em auto .5em auto;
   display: block;
   
   line-height: 100%;
@@ -234,18 +269,20 @@ h3{
 }
 
 img.highlight{
-  max-width: 500px;
+  width: 90vw;
+  max-width: 700px;
   margin: 0 auto;
 }
 
 .block-text p{
-  max-width: 600px;
+  max-width: 650px;
   margin-bottom: 1em;
 }
 
 
 p {
   margin: 0 auto;
+  padding: 0;
   font-size: 16px;
   line-height: 140%;
   
@@ -261,10 +298,18 @@ p.p-quote{
   font-family: "Editorial New Light";
   font-size: 2.8em;
   line-height: 100%;
-  padding: .5em 2.5em;
+  margin-top: 1em;
+  padding: 0 2.5em;
   max-width: 550px;
   letter-spacing: -3px;
   text-align: center;
+}
+
+#interactive iframe{
+  width: 100%;
+  min-height: 800px;
+  padding: 1em;
+  border: 0;
 }
 
 /* TEXT */
@@ -281,6 +326,7 @@ a {
 
 a:hover {
   color: var(--text-accent);
+  opacity: 0.6;
 }
 
 
@@ -289,14 +335,24 @@ a.button{
   text-decoration: none;
   border:1px solid var(--text-color);
   padding: .5em;
+  margin: .5em auto;
   color: var(--text-color);
 }
 
 a.button:hover{
-  color:yellow;
   opacity: 0.6;
   color: var(--text-color);
 }
+
+a.subbutton{
+  display: inline-block;
+  text-decoration: none;
+  border: none;
+  padding: .5em;
+  margin: .5em auto;
+  color: var(--text-color);
+}
+
 
 
 mark {
