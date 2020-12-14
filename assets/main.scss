@@ -127,9 +127,9 @@ html {
   z-index: 99;
   background: #eee;
   pointer-events: none;
-  animation: 1.5s ease-out 2.5s 1 pageload forwards;
+  animation: 1s ease-out 5s 1 pageload forwards;
   // TODO: ENABLE
-  display: none;
+//  display: none;
   
   .loading{
     color:#000;
