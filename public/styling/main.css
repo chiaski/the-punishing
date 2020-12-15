@@ -27,21 +27,45 @@
   font-style: normal;
   font-display: swap;
 }
+.cover {
+  position: relative;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  mix-blend-mode: screen;
+  z-index: 99;
+  pointer-events: none;
+}
+
 .static {
-  position: fixed;
+  position: absolute;
   top: -50%;
   left: -50%;
   right: -50%;
   bottom: -50%;
-  width: 150;
+  width: 200vw;
   height: 200vh;
-  z-index: 9999;
   pointer-events: none;
   background-repeat: repeat;
   background-size: 500%;
-  animation: bg-animation 0.5s infinite;
+  animation: bg-animation 0.8s infinite;
   opacity: 0.9;
   visibility: visible;
+}
+
+#block-cover {
+  position: fixed;
+  pointer-events: none;
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  top: 0;
+  left: 0;
+  z-index: 9999;
+  overflow: hidden;
 }
 
 @keyframes bg-animation {
@@ -122,7 +146,6 @@ html {
   background: #eee;
   pointer-events: none;
   animation: 1s ease-out 5s 1 pageload forwards;
-  display: none;
 }
 #loader .loading {
   color: #000;
@@ -135,15 +158,14 @@ body {
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  padding-top: 1em;
   font-weight: 400;
   line-height: 1.5em;
 }
 
 #container {
-  position: absolute;
   top: 0;
   left: 0;
+  padding: 0;
   margin: 0;
   display: flex;
   flex-wrap: wrap;
@@ -155,20 +177,9 @@ body {
   width: 100%;
 }
 
-.cover {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-size: cover;
-  mix-blend-mode: screen;
-  z-index: 99;
-  pointer-events: none;
-}
-
 .box {
   width: 100%;
+  max-width: 100%;
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -180,8 +191,13 @@ body {
   background-position: center;
   background-repeat: no-repeat;
 }
+.box img {
+  max-width: 100vw;
+}
 
 .box-inner {
+  box-sizing: border-box;
+  max-width: 100vw;
   padding: 2vh auto;
 }
 
@@ -249,6 +265,8 @@ h4 {
 
 .blocker {
   width: 100%;
+  max-width: 100vw;
+  box-sizing: border-box;
   text-align: center;
   margin: 2.5em auto;
 }
@@ -260,19 +278,21 @@ img.highlight {
 }
 
 .block-text p {
-  max-width: 650px;
+  width: 550px;
+  max-width: 90vw;
   margin-bottom: 1em;
 }
 
 p {
   margin: 0 auto;
   padding: 0;
-  font-size: 16px;
+  font-size: 17px;
   line-height: 140%;
   max-width: 800px;
 }
 
 p.p-center {
+  width: 95vw;
   max-width: 600px;
   text-align: center;
 }
@@ -282,8 +302,10 @@ p.p-quote {
   font-size: 2.8em;
   line-height: 100%;
   margin-top: 1em;
-  padding: 0 2.5em;
-  max-width: 550px;
+  padding: 0 3em;
+  width: 620px;
+  max-width: 95vw;
+  box-sizing: border-box;
   letter-spacing: -3px;
   text-align: center;
 }
@@ -392,6 +414,8 @@ mark {
 
 /* ELEMENTS */
 hr {
+  display: inline-block;
+  max-width: 50px;
   margin: 2em 0;
   border: 1px solid var(--ele-line);
 }
