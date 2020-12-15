@@ -103,7 +103,7 @@ html {
   --text-light-color: #c9c6d1;
   --text-accent: #141cd1;
   --ele-light: #e5e4eb;
-  --ele-line: #141cd1;
+  --ele-line: #dfdce6;
   --ele-highlight: #141cd1;
 }
 
@@ -122,6 +122,7 @@ html {
   background: #eee;
   pointer-events: none;
   animation: 1s ease-out 5s 1 pageload forwards;
+  display: none;
 }
 #loader .loading {
   color: #000;
@@ -150,7 +151,6 @@ body {
   align-content: flex-start;
   align-items: center;
   box-sizing: border-box;
-  padding: 1em;
   height: 100%;
   width: 100%;
 }
@@ -170,6 +170,7 @@ body {
 .box {
   width: 100%;
   margin: 0;
+  padding: 0;
   box-sizing: border-box;
   display: flex;
   align-self: center;
@@ -181,7 +182,7 @@ body {
 }
 
 .box-inner {
-  margin: 2vh auto;
+  padding: 2vh auto;
 }
 
 .box.box-80 {
@@ -228,7 +229,7 @@ h2 {
 h3 {
   width: 90vw;
   max-width: 600px;
-  margin: 1em auto 0.5em auto;
+  margin: 0 auto 0.5em auto;
   display: block;
   line-height: 100%;
   font-family: "Editorial New Light";
@@ -236,6 +237,14 @@ h3 {
   letter-spacing: -6px;
   font-size: 64px;
   text-align: center;
+}
+
+h4 {
+  text-transform: uppercase;
+  text-align: center;
+  margin-top: 2em;
+  margin-bottom: 0.5em;
+  opacity: 0.8;
 }
 
 .blocker {
@@ -294,11 +303,52 @@ a {
   -ms-transition: all 0.3s linear;
   -o-transition: all 0.3s linear;
   transition: all 0.3s linear;
+  animation-delay: 0;
 }
 
 a:hover {
   color: var(--text-accent);
   opacity: 0.6;
+}
+
+#intro {
+  background-size: 300%;
+}
+#intro h1 {
+  margin: 0;
+  padding: 0;
+}
+#intro p {
+  margin: 0;
+  padding: 0;
+}
+#intro a.button {
+  font-size: 1.5em;
+  background-color: var(--text-color);
+  color: var(--bg-color);
+  animation-delay: 0 !important;
+}
+#intro a.button:hover {
+  opacity: 0.5;
+}
+
+.block-navigation {
+  max-width: 650px;
+  text-align: center;
+}
+.block-navigation h3 {
+  color: transparent;
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: var(--text-color);
+}
+.block-navigation a {
+  background: var(--bg-color);
+  color: var(--text-color);
+  padding: 0.5em;
+  margin: 0.25em;
+  font-size: 1em;
+  display: inline-block;
+  text-decoration: none;
 }
 
 a.button {
@@ -308,6 +358,7 @@ a.button {
   padding: 0.5em;
   margin: 0.5em auto;
   color: var(--text-color);
+  animation-delay: 0 !important;
 }
 
 a.button:hover {
